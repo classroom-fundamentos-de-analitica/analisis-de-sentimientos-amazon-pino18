@@ -141,12 +141,10 @@ def pregunta_04():
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
     # parámetros. Use cv = 5, y "accuracy" como métrica de evaluación
     gridSearchCV = GridSearchCV(
-        estimator=pipeline,
-        param_grid=param_grid,
+        estimator= pipeline,
+        param_grid= param_grid,
         cv=5,
         scoring="accuracy",
-        refit=True,
-        return_train_score=False,
     )
 
     # Búsque la mejor combinación de regresores
