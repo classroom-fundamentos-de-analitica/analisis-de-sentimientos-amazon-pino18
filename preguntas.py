@@ -101,7 +101,6 @@ def pregunta_04():
     from sklearn.model_selection import GridSearchCV
     from sklearn.pipeline import Pipeline
     from sklearn.naive_bayes import BernoulliNB
-
     # Cargue las variables.
     x_train, x_test, y_train, y_test = pregunta_02()
 
@@ -135,7 +134,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "BernoulliNB_alpha": np.arange(0.1, 1.1, 0.1),
+        "BernoulliNB__alpha": np.arange(0.1, 1.1, 0.1),
     }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
@@ -171,7 +170,7 @@ def pregunta_05():
 
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
     cfm_train = confusion_matrix(
-        y_true=y_test,
+        y_true=y_train,
         y_pred=gridSearchCV.predict(X_train),
     )
 
@@ -194,11 +193,12 @@ def pregunta_06():
     gridSearchCV = pregunta_04()
 
     # Cargue los datos generados en la pregunta 01.
-    x_tagged, y_tagged, X_untagged, y_untagged = pregunta_01()
+    x_tagged, y_tagged, x_untagged, y_untagged = pregunta_01()
 
     # pronostique la polaridad del sentimiento para los datos
     # no etiquetados
     y_untagged_pred = gridSearchCV.predict(x_untagged)
+
 
     # Retorne el vector de predicciones
     return y_untagged_pred
